@@ -13,20 +13,21 @@ export default class CountryList extends React.Component{
         //fetching to the rails backend
         fetch('http://localhost:3000/countries')
             .then(res => res.json())
-            .then(list => this.setState({countries: list}))
+            .then(list => this.setState({countries: list, loaded: true }))
     }
 
     createList = () => {
-    this.state.countries.map(country => <li key={country.id}>{country.name} - 
+        return this.state.countries.map(country => <li key={country.id}>{country.name} - 
                     {country.currency_name} - {country.currency_code}</li>)
     }
 
     render(){
+        console.log(this.state)
         return(
             <div>
-                <ul>
-                    {this.state.loaded ? this.createList : 'Loading'}
-                </ul>
+                <ol>
+                    {this.state.loaded ? this.createList() : 'Loading'}
+                </ol>
             </div>
         )
     }
