@@ -11,7 +11,7 @@ export default class CountryList extends React.Component{
 
     componentDidMount(){
         //fetching to the rails backend
-        fetch('http://localhost:3000/countries')
+        fetch('https://cors-demo-backend.herokuapp.com/countries')
             .then(res => res.json())
             .then(list => this.setState({countries: list, loaded: true }))
     }
@@ -22,7 +22,6 @@ export default class CountryList extends React.Component{
     }
 
     render(){
-        console.log(this.state)
         return(
             <div>
                 <ol>
